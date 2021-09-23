@@ -52,5 +52,33 @@ public class InterfaceTester {
 
         // we can define our interfaces
         Shape myShape = myCircle;
+        Rectangle r1 = new Rectangle();
+        System.out.println(r1);
+
+        // polymorphism demo with interfaces
+        // same code, different behavior
+        Shape[] shapes = new Shape[3];
+        shapes[0] = myShape; // refers to a Circle
+        shapes[1] = r1;
+        shapes[2] = new Shape() {
+            // 5x5 square
+            @Override
+            public double computePerimeter() {
+                return 20;
+            }
+
+            @Override
+            public double computeArea() {
+                return 25;
+            }
+        };
+        // SAME shape code, DIFFERENT shape behavior at runtime
+        for (Shape s : shapes) {
+            System.out.println(s);
+            System.out.println(s.computePerimeter());
+            System.out.println(s.computeArea());
+            System.out.println("********");
+        }
+
     }
 }
